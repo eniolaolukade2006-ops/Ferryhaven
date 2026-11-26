@@ -165,3 +165,10 @@ window.addEventListener('load', () => {
 
   render();
 })();
+
+/* ---------- Jerseys: tap (or Enter) shows the back ---------- */
+document.querySelectorAll('.img-wrap.flip').forEach(function (w) {
+  function toggle() { w.classList.toggle('show-back'); }
+  w.addEventListener('click', function () { if (!window.matchMedia('(hover:hover)').matches) toggle(); });
+  w.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+});

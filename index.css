@@ -656,3 +656,23 @@
   }
   .cart-toast.show{opacity:1;transform:translate(-50%,0);}
   body.cart-open{overflow:hidden;}
+
+  /* ---------- Jerseys: front by default, back on hover / tap ---------- */
+  .card .img-wrap.flip{cursor:pointer;}
+  .card .img-wrap.flip img{transition:opacity .45s ease, transform 0.8s cubic-bezier(.22,1,.36,1);}
+  .card .img-wrap.flip img.back{opacity:0;}
+  .card .img-wrap.flip.show-back img.front{opacity:0;}
+  .card .img-wrap.flip.show-back img.back{opacity:1;}
+  @media (hover:hover){
+    .card .img-wrap.flip:hover img.front{opacity:0;}
+    .card .img-wrap.flip:hover img.back{opacity:1;}
+  }
+  .flip-hint{
+    position:absolute;top:14px;right:14px;z-index:2;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--ink);color:var(--fog);padding:6px 10px;
+    transition:opacity .3s ease;
+  }
+  @media (hover:hover){ .flip-hint::before{content:'Hover: ';} .card .img-wrap.flip:hover .flip-hint{opacity:0;} }
+  @media (hover:none){ .flip-hint::before{content:'Tap: ';} }
+  .card .img-wrap.flip.show-back .flip-hint{opacity:0;}
